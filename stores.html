@@ -1,0 +1,2557 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hanuman Auto Oil Stores</title>
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #222;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: linear-gradient(135deg, #b71c1c, #e65100);
+    color: white;
+    padding: 15px 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hanuman-logo {
+    width: 55px;
+    height: 55px;
+
+    background: white;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+}
+
+.logo-title h1 {
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav button {
+    background: transparent;
+    color: white;
+
+    border: none;
+
+    padding: 8px 10px;
+    margin: 3px;
+
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+nav button:hover {
+    color: #ffe082;
+}
+
+
+/* =========================
+   SECTION CONTROL
+========================= */
+
+/* Every section is hidden initially */
+
+.page-section {
+    display: none;
+    padding: 50px 8%;
+    min-height: 550px;
+}
+
+/* JavaScript adds this class */
+
+.show-section {
+    display: block;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.hero {
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.60),
+        rgba(0,0,0,0.60)
+    ),
+    url("https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 15px;
+}
+
+.hero h2 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+.hero-button {
+    margin-top: 25px;
+
+    padding: 14px 25px;
+
+    background: #e65100;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.hero-button:hover {
+    background: #ff6d00;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    color: #b71c1c;
+
+    font-size: 32px;
+}
+
+
+/* =========================
+   ITEMS
+========================= */
+
+.items-container {
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 20px;
+}
+
+.item-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    border-top: 5px solid #e65100;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+
+.item-card:hover {
+    transform: translateY(-6px);
+}
+
+.item-card h3 {
+    color: #b71c1c;
+
+    margin-bottom: 10px;
+}
+
+.item-id {
+    color: #777;
+
+    font-weight: bold;
+}
+
+.price {
+    color: #e65100;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+}
+
+.stock {
+    margin-top: 12px;
+
+    font-weight: bold;
+}
+
+.low-stock {
+    color: #e65100;
+}
+
+.out-stock {
+    color: red;
+}
+
+
+/* =========================
+   BOXES
+========================= */
+
+.billing-box,
+.ordering-box,
+.merchant-box {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.12);
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+
+    border-color: #e65100;
+
+    box-shadow:
+    0 0 5px rgba(230,81,0,0.3);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.action-button {
+    padding: 12px 20px;
+
+    background: #b71c1c;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.action-button:hover {
+    background: #7f0000;
+}
+
+
+/* =========================
+   BILLING INPUT
+========================= */
+
+.billing-input {
+    display: flex;
+
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+
+    border-bottom: 1px solid #ddd;
+
+    text-align: center;
+}
+
+th {
+    background: #b71c1c;
+
+    color: white;
+}
+
+
+/* =========================
+   BILL SUMMARY
+========================= */
+
+.billing-summary {
+
+    margin-top: 25px;
+
+    background: #fff3e0;
+
+    padding: 20px;
+
+    border-radius: 10px;
+}
+
+.summary-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin: 12px 0;
+
+    font-size: 17px;
+}
+
+.discount-input {
+    width: 90px;
+
+    display: inline-block;
+}
+
+.grand-total {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: #b71c1c;
+
+    border-top: 2px solid #b71c1c;
+
+    padding-top: 15px;
+}
+
+
+/* =========================
+   PURCHASE QUESTION
+========================= */
+
+.purchase-question {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #fafafa;
+
+    border: 2px solid #e65100;
+
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.purchase-question h3 {
+
+    color: #b71c1c;
+
+    margin-bottom: 15px;
+}
+
+.purchase-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.yes-button {
+
+    background: #2e7d32;
+}
+
+.yes-button:hover {
+
+    background: #1b5e20;
+}
+
+.no-button {
+
+    background: #616161;
+}
+
+.no-button:hover {
+
+    background: #424242;
+}
+
+#purchaseMessage {
+
+    margin-top: 20px;
+
+    display: none;
+
+    padding: 20px;
+
+    border-radius: 10px;
+}
+
+.thank-you {
+
+    background: #e8f5e9;
+
+    color: #1b5e20;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.no-message {
+
+    background: #eeeeee;
+
+    color: #555;
+}
+
+
+/* =========================
+   ORDERING
+========================= */
+
+.order-field {
+
+    margin-bottom: 20px;
+}
+
+.order-field label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+.verify-result {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    display: none;
+}
+
+.success {
+
+    background: #d4edda;
+
+    color: #155724;
+}
+
+.error {
+
+    background: #f8d7da;
+
+    color: #721c24;
+}
+
+
+/* =========================
+   RESTOCK MESSAGE
+========================= */
+
+.purchase-needed {
+
+    max-width: 1000px;
+
+    margin: 0 auto 25px auto;
+
+    padding: 20px;
+
+    background: #fff3cd;
+
+    color: #856404;
+
+    border-left: 6px solid #ff9800;
+
+    border-radius: 8px;
+}
+
+.purchase-needed h3 {
+
+    margin-bottom: 12px;
+}
+
+.purchase-needed li {
+
+    margin: 8px 0;
+}
+
+.all-stock-message {
+
+    background: #e8f5e9;
+
+    color: #2e7d32;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   MERCHANT LOGIN
+========================= */
+
+.login-box {
+
+    max-width: 450px;
+
+    margin: auto;
+}
+
+.login-box input {
+
+    margin-bottom: 15px;
+}
+
+.secret-warning {
+
+    background: #fff3cd;
+
+    color: #856404;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+}
+
+.secret-table {
+
+    display: none;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-container {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+}
+
+.about-card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-card img {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+}
+
+.address {
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    background: #212121;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    header {
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .logo-title h1 {
+
+        font-size: 19px;
+    }
+
+    nav button {
+
+        font-size: 13px;
+
+        padding: 6px;
+    }
+
+    .hero h2 {
+
+        font-size: 32px;
+    }
+
+    .billing-input {
+
+        flex-direction: column;
+    }
+
+    table {
+
+        font-size: 12px;
+    }
+
+    th,
+    td {
+
+        padding: 7px;
+    }
+
+    .page-section {
+
+        padding: 30px 5%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+    <div class="logo-title">
+
+        <div class="hanuman-logo">
+            🛕
+        </div>
+
+        <h1>
+            Hanuman Auto Oil Stores
+        </h1>
+
+    </div>
+
+
+    <nav>
+
+        <button onclick="showSection('home')">
+            Home
+        </button>
+
+        <button onclick="showSection('items')">
+            Items
+        </button>
+
+        <button onclick="showSection('billing')">
+            Billing
+        </button>
+
+        <button onclick="showSection('ordering')">
+            Ordering
+        </button>
+
+        <button onclick="showSection('merchant')">
+            Merchant Codes
+        </button>
+
+        <button onclick="showSection('about')">
+            About
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- ==================================================
+     HOME
+================================================== -->
+
+<section
+    id="home"
+    class="page-section show-section"
+>
+
+    <div class="hero">
+
+        <h2>
+            Hanuman Auto Oil Stores
+        </h2>
+
+        <p>
+            Your Trusted Auto Oil & Automobile Products Store
+        </p>
+
+        <div
+            class="hero-button"
+            onclick="showSection('items')"
+        >
+            View Our Items
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     ITEMS
+================================================== -->
+
+<section
+    id="items"
+    class="page-section"
+>
+
+    <h2 class="section-title">
+        Our Items
+    </h2>
+
+
+    <div
+        id="itemsContainer"
+        class="items-container"
+    >
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     BILLING
+================================================== -->
+
+<section
+    id="billing"
+    class="page-section"
+>
+
+    <h2 class="section-title">
+        Billing System
+    </h2>
+
+
+    <div class="billing-box">
+
+        <h3>
+            Add Product to Bill
+        </h3>
+
+
+        <div class="billing-input">
+
+            <input
+                type="text"
+                id="billingId"
+                placeholder="Enter Item ID e.g. AO101"
+            >
+
+
+            <input
+                type="number"
+                id="billingQty"
+                value="1"
+                min="1"
+                placeholder="Quantity"
+            >
+
+
+            <button
+                class="action-button"
+                onclick="addToBill()"
+            >
+                Add Item
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Item ID
+                        </th>
+
+                        <th>
+                            Product Name
+                        </th>
+
+                        <th>
+                            Price
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="billTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- BILL SUMMARY -->
+
+        <div class="billing-summary">
+
+            <div class="summary-row">
+
+                <span>
+                    Subtotal:
+                </span>
+
+                <span>
+                    ₹<span id="subtotal">
+                        0.00
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    GST (5%):
+                </span>
+
+                <span>
+                    ₹<span id="gst">
+                        0.00
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Discount:
+                </span>
+
+                <span>
+
+                    <input
+                        type="number"
+                        id="discount"
+                        class="discount-input"
+                        value="0"
+                        min="0"
+                        max="100"
+                        oninput="calculateTotal()"
+                    >
+
+                    %
+
+                    = ₹<span id="discountAmount">
+                        0.00
+                    </span>
+
+                </span>
+
+            </div>
+
+
+            <div class="summary-row grand-total">
+
+                <span>
+                    Grand Total:
+                </span>
+
+                <span>
+                    ₹<span id="grandTotal">
+                        0.00
+                    </span>
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PURCHASE QUESTION -->
+
+        <div class="purchase-question">
+
+            <h3>
+                Goods Purchased?
+            </h3>
+
+
+            <div class="purchase-buttons">
+
+                <button
+                    class="action-button yes-button"
+                    onclick="goodsPurchased('yes')"
+                >
+                    YES
+                </button>
+
+
+                <button
+                    class="action-button no-button"
+                    onclick="goodsPurchased('no')"
+                >
+                    NO
+                </button>
+
+            </div>
+
+
+            <div id="purchaseMessage">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     ORDERING
+================================================== -->
+
+<section
+    id="ordering"
+    class="page-section"
+>
+
+    <h2 class="section-title">
+        Product Ordering
+    </h2>
+
+
+    <!-- RESTOCK LIST -->
+
+    <div
+        id="purchaseNeeded"
+        class="purchase-needed"
+    >
+    </div>
+
+
+    <div class="ordering-box">
+
+        <p>
+            Enter the secret product code and quantity.
+            The product will be identified automatically.
+        </p>
+
+        <br>
+
+
+        <div class="order-field">
+
+            <label>
+                Secret Product Code
+            </label>
+
+            <input
+                type="text"
+                id="orderCode"
+                placeholder="Enter secret code"
+            >
+
+        </div>
+
+
+        <div class="order-field">
+
+            <label>
+                Quantity
+            </label>
+
+            <input
+                type="number"
+                id="orderQty"
+                value="1"
+                min="1"
+            >
+
+        </div>
+
+
+        <button
+            class="action-button"
+            onclick="verifyOrder()"
+        >
+            Verify & Order
+        </button>
+
+
+        <div
+            id="verifyResult"
+            class="verify-result"
+        >
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     MERCHANT CODES
+================================================== -->
+
+<section
+    id="merchant"
+    class="page-section"
+>
+
+    <h2 class="section-title">
+        Merchant Access
+    </h2>
+
+
+    <div class="merchant-box">
+
+
+        <!-- LOGIN AREA -->
+
+        <div
+            id="loginArea"
+            class="login-box"
+        >
+
+            <div class="secret-warning">
+
+                🔐 <b>Merchant Only Area</b>
+
+                <br><br>
+
+                Enter the merchant username and password
+                to view the secret product codes.
+
+            </div>
+
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+            >
+
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
+
+
+            <button
+                class="action-button"
+                onclick="merchantLogin()"
+            >
+                Login
+            </button>
+
+
+            <p
+                id="loginMessage"
+                style="margin-top:15px;"
+            >
+            </p>
+
+        </div>
+
+
+        <!-- SECRET TABLE -->
+
+        <div
+            id="secretTable"
+            class="secret-table"
+        >
+
+            <div class="secret-warning">
+
+                🔓 Merchant authentication successful.
+
+                <br>
+
+                Secret product codes are displayed below.
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Product
+                            </th>
+
+                            <th>
+                                Item ID
+                            </th>
+
+                            <th>
+                                Secret Code
+                            </th>
+
+                            <th>
+                                Price
+                            </th>
+
+                            <th>
+                                Stock
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="secretTableBody"
+                    >
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     ABOUT
+================================================== -->
+
+<section
+    id="about"
+    class="page-section"
+>
+
+    <h2 class="section-title">
+        About Us
+    </h2>
+
+
+    <div class="about-container">
+
+
+        <div class="about-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80"
+                alt="Auto Shop"
+            >
+
+            <h3>
+                Our Shop
+            </h3>
+
+            <br>
+
+            <p>
+                Hanuman Auto Oil Stores provides quality
+                auto oils, lubricants and automobile products.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+                alt="Merchant"
+            >
+
+            <h3>
+                Merchant
+            </h3>
+
+            <br>
+
+            <p>
+                Friendly service and reliable automobile
+                products for our customers.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                📍 Shop Address
+            </h3>
+
+            <br>
+
+            <p class="address">
+
+                Hanuman Auto Oil Stores
+
+                <br>
+
+                Near Metpally Depot
+
+                <br>
+
+                Metpally, Telangana
+
+                <br>
+
+                India
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 Hanuman Auto Oil Stores |
+        All Rights Reserved
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* ==================================================
+   PRODUCT DATABASE
+
+   Every product starts with 10 quantity.
+================================================== */
+
+const products = {
+
+    AO101: {
+        name: "Engine Oil 10W-40",
+        price: 550,
+        secret: "HAN101X",
+        quantity: 10
+    },
+
+    AO102: {
+        name: "Engine Oil 20W-50",
+        price: 600,
+        secret: "HAN102X",
+        quantity: 10
+    },
+
+    AO103: {
+        name: "Gear Oil",
+        price: 450,
+        secret: "HAN103X",
+        quantity: 10
+    },
+
+    AO104: {
+        name: "Brake Oil",
+        price: 280,
+        secret: "HAN104X",
+        quantity: 10
+    },
+
+    AO105: {
+        name: "Coolant",
+        price: 350,
+        secret: "HAN105X",
+        quantity: 10
+    },
+
+    AO106: {
+        name: "Chain Lubricant",
+        price: 220,
+        secret: "HAN106X",
+        quantity: 10
+    },
+
+    AO107: {
+        name: "Air Filter",
+        price: 300,
+        secret: "HAN107X",
+        quantity: 10
+    },
+
+    AO108: {
+        name: "Oil Filter",
+        price: 180,
+        secret: "HAN108X",
+        quantity: 10
+    },
+
+    AO109: {
+        name: "Spark Plug",
+        price: 150,
+        secret: "HAN109X",
+        quantity: 10
+    },
+
+    AO110: {
+        name: "Power Steering Oil",
+        price: 400,
+        secret: "HAN110X",
+        quantity: 10
+    }
+
+};
+
+
+/* ==================================================
+   BILL ARRAY
+================================================== */
+
+let billItems = [];
+
+
+/* ==================================================
+   SHOW SECTION
+
+   Only the selected section is displayed.
+================================================== */
+
+function showSection(sectionId) {
+
+    /* Get all sections */
+
+    const sections =
+        document.querySelectorAll(
+            ".page-section"
+        );
+
+
+    /* Hide every section */
+
+    sections.forEach(function(section) {
+
+        section.classList.remove(
+            "show-section"
+        );
+
+    });
+
+
+    /* Show selected section */
+
+    const selectedSection =
+        document.getElementById(sectionId);
+
+
+    if (selectedSection) {
+
+        selectedSection.classList.add(
+            "show-section"
+        );
+
+    }
+
+
+    /*
+       IMPORTANT:
+       Every time merchant leaves
+       Merchant Codes, hide the secret codes.
+    */
+
+    if (sectionId !== "merchant") {
+
+        hideMerchantCodes();
+
+    }
+
+
+    /* Refresh information */
+
+    displayItems();
+
+    displayPurchaseNeeded();
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ==================================================
+   HIDE MERCHANT CODES
+================================================== */
+
+function hideMerchantCodes() {
+
+    document
+        .getElementById("secretTable")
+        .style.display = "none";
+
+
+    document
+        .getElementById("loginArea")
+        .style.display = "block";
+
+
+    document
+        .getElementById("username")
+        .value = "";
+
+
+    document
+        .getElementById("password")
+        .value = "";
+
+
+    document
+        .getElementById("loginMessage")
+        .innerHTML = "";
+
+}
+
+
+/* ==================================================
+   DISPLAY ITEMS
+================================================== */
+
+function displayItems() {
+
+    const container =
+        document.getElementById(
+            "itemsContainer"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    for (let id in products) {
+
+        const product =
+            products[id];
+
+
+        let stockClass = "";
+
+
+        if (product.quantity === 0) {
+
+            stockClass = "out-stock";
+
+        }
+
+        else if (product.quantity <= 3) {
+
+            stockClass = "low-stock";
+
+        }
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "item-card";
+
+
+        card.innerHTML = `
+
+            <h3>
+                ${product.name}
+            </h3>
+
+            <p class="item-id">
+                Item ID: ${id}
+            </p>
+
+            <p class="price">
+                ₹${product.price}
+            </p>
+
+            <p class="stock ${stockClass}">
+                Available Quantity:
+                ${product.quantity}
+            </p>
+
+        `;
+
+
+        container.appendChild(card);
+
+    }
+
+}
+
+
+/* ==================================================
+   ADD ITEM TO BILL
+================================================== */
+
+function addToBill() {
+
+    const id =
+        document
+        .getElementById("billingId")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    const qty =
+        parseInt(
+            document
+            .getElementById("billingQty")
+            .value
+        );
+
+
+    /* Check ID */
+
+    if (!products[id]) {
+
+        alert(
+            "❌ Invalid Item ID!"
+        );
+
+        return;
+
+    }
+
+
+    /* Check quantity */
+
+    if (!qty || qty < 1) {
+
+        alert(
+            "❌ Please enter a valid quantity."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Find how much of this product
+       is already in the current bill.
+    */
+
+    let alreadyInBill = 0;
+
+
+    billItems.forEach(function(item) {
+
+        if (item.id === id) {
+
+            alreadyInBill +=
+                item.quantity;
+
+        }
+
+    });
+
+
+    /*
+       Check stock.
+    */
+
+    if (
+        alreadyInBill + qty >
+        products[id].quantity
+    ) {
+
+        alert(
+
+            "❌ Not enough stock!\n\n" +
+
+            "Available stock: " +
+            products[id].quantity
+
+        );
+
+        return;
+
+    }
+
+
+    /* Add item */
+
+    billItems.push({
+
+        id: id,
+
+        name: products[id].name,
+
+        price: products[id].price,
+
+        quantity: qty
+
+    });
+
+
+    displayBill();
+
+
+    document
+        .getElementById("billingId")
+        .value = "";
+
+
+    document
+        .getElementById("billingQty")
+        .value = 1;
+
+}
+
+
+/* ==================================================
+   DISPLAY BILL
+================================================== */
+
+function displayBill() {
+
+    const table =
+        document.getElementById(
+            "billTable"
+        );
+
+
+    table.innerHTML = "";
+
+
+    billItems.forEach(
+        function(item, index) {
+
+            const row =
+                document.createElement("tr");
+
+
+            const total =
+                item.price *
+                item.quantity;
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${item.id}
+                </td>
+
+                <td>
+                    ${item.name}
+                </td>
+
+                <td>
+                    ₹${item.price.toFixed(2)}
+                </td>
+
+                <td>
+                    ${item.quantity}
+                </td>
+
+                <td>
+                    ₹${total.toFixed(2)}
+                </td>
+
+                <td>
+
+                    <button
+                        class="action-button"
+                        onclick="removeItem(${index})"
+                    >
+                        Remove
+                    </button>
+
+                </td>
+
+            `;
+
+
+            table.appendChild(row);
+
+        }
+    );
+
+
+    calculateTotal();
+
+}
+
+
+/* ==================================================
+   REMOVE BILL ITEM
+================================================== */
+
+function removeItem(index) {
+
+    billItems.splice(index, 1);
+
+    displayBill();
+
+}
+
+
+/* ==================================================
+   CALCULATE TOTAL
+================================================== */
+
+function calculateTotal() {
+
+    let subtotal = 0;
+
+
+    billItems.forEach(function(item) {
+
+        subtotal +=
+            item.price *
+            item.quantity;
+
+    });
+
+
+    /* GST 5% */
+
+    const gst =
+        subtotal * 0.05;
+
+
+    /* Discount percentage */
+
+    let discountPercent =
+        parseFloat(
+            document
+            .getElementById("discount")
+            .value
+        ) || 0;
+
+
+    if (discountPercent < 0) {
+
+        discountPercent = 0;
+
+    }
+
+
+    if (discountPercent > 100) {
+
+        discountPercent = 100;
+
+    }
+
+
+    /*
+       Convert percentage into rupees.
+    */
+
+    const discountAmount =
+        subtotal *
+        (discountPercent / 100);
+
+
+    /*
+       Grand total.
+    */
+
+    let grandTotal =
+        subtotal +
+        gst -
+        discountAmount;
+
+
+    if (grandTotal < 0) {
+
+        grandTotal = 0;
+
+    }
+
+
+    document
+        .getElementById("subtotal")
+        .innerText =
+        subtotal.toFixed(2);
+
+
+    document
+        .getElementById("gst")
+        .innerText =
+        gst.toFixed(2);
+
+
+    document
+        .getElementById("discountAmount")
+        .innerText =
+        discountAmount.toFixed(2);
+
+
+    document
+        .getElementById("grandTotal")
+        .innerText =
+        grandTotal.toFixed(2);
+
+}
+
+
+/* ==================================================
+   GOODS PURCHASED
+================================================== */
+
+function goodsPurchased(answer) {
+
+    const message =
+        document.getElementById(
+            "purchaseMessage"
+        );
+
+
+    message.style.display = "block";
+
+
+    /* =====================
+       YES
+    ===================== */
+
+    if (answer === "yes") {
+
+
+        /* Don't allow empty bill */
+
+        if (billItems.length === 0) {
+
+            message.className =
+                "no-message";
+
+
+            message.innerHTML =
+
+                "⚠️ Please add products " +
+                "to the bill first.";
+
+
+            return;
+
+        }
+
+
+        /*
+           Reduce stock.
+        */
+
+        billItems.forEach(function(item) {
+
+            products[item.id].quantity -=
+                item.quantity;
+
+        });
+
+
+        /*
+           Thank-you message.
+        */
+
+        message.className =
+            "thank-you";
+
+
+        message.innerHTML = `
+
+            <div style="font-size:40px;">
+                🙏
+            </div>
+
+            Thank You!
+
+            <br>
+
+            Your purchase has been recorded.
+
+            <br>
+
+            Please visit us again!
+
+            <br><br>
+
+            <span style="font-size:16px;">
+                Hanuman Auto Oil Stores
+            </span>
+
+        `;
+
+
+        /*
+           Clear bill.
+        */
+
+        billItems = [];
+
+
+        displayBill();
+
+        displayItems();
+
+        displayPurchaseNeeded();
+
+    }
+
+
+    /* =====================
+       NO
+    ===================== */
+
+    else {
+
+        message.className =
+            "no-message";
+
+
+        message.innerHTML = `
+
+            Purchase not confirmed.
+
+            <br>
+
+            Stock quantity has not been changed.
+
+        `;
+
+    }
+
+}
+
+
+/* ==================================================
+   DISPLAY RESTOCK ITEMS
+================================================== */
+
+function displayPurchaseNeeded() {
+
+    const container =
+        document.getElementById(
+            "purchaseNeeded"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    let needed = [];
+
+
+    for (let id in products) {
+
+        if (
+            products[id].quantity === 0
+        ) {
+
+            needed.push({
+
+                id: id,
+
+                name: products[id].name
+
+            });
+
+        }
+
+    }
+
+
+    /* No items need purchasing */
+
+    if (needed.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="all-stock-message">
+
+                ✅ All products currently
+                have available stock.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* Create list */
+
+    let list = "";
+
+
+    needed.forEach(function(item) {
+
+        list += `
+
+            <li>
+
+                <b>
+                    ${item.name}
+                </b>
+
+                — Item ID:
+                <b>${item.id}</b>
+
+                — Stock:
+                <b>0</b>
+
+                → Please purchase this item.
+
+            </li>
+
+        `;
+
+    });
+
+
+    container.innerHTML = `
+
+        <h3>
+            ⚠️ Items That Need To Be Purchased
+        </h3>
+
+        <p>
+            These products have reached zero stock:
+        </p>
+
+        <br>
+
+        <ul>
+            ${list}
+        </ul>
+
+    `;
+
+}
+
+
+/* ==================================================
+   VERIFY ORDER
+================================================== */
+
+function verifyOrder() {
+
+    const code =
+        document
+        .getElementById("orderCode")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    const quantity =
+        parseInt(
+            document
+            .getElementById("orderQty")
+            .value
+        );
+
+
+    const result =
+        document.getElementById(
+            "verifyResult"
+        );
+
+
+    result.style.display = "block";
+
+
+    if (!quantity || quantity < 1) {
+
+        result.className =
+            "verify-result error";
+
+
+        result.innerHTML =
+            "❌ Please enter a valid quantity.";
+
+        return;
+
+    }
+
+
+    let foundProduct = null;
+
+    let foundId = null;
+
+
+    /*
+       Search secret code.
+    */
+
+    for (let id in products) {
+
+        if (
+            products[id].secret === code
+        ) {
+
+            foundProduct =
+                products[id];
+
+            foundId =
+                id;
+
+            break;
+
+        }
+
+    }
+
+
+    /* Invalid code */
+
+    if (!foundProduct) {
+
+        result.className =
+            "verify-result error";
+
+
+        result.innerHTML = `
+
+            ❌ Invalid Secret Code.
+
+            <br><br>
+
+            Please enter a valid product code.
+
+        `;
+
+        return;
+
+    }
+
+
+    /* Valid code */
+
+    result.className =
+        "verify-result success";
+
+
+    result.innerHTML = `
+
+        ✅ Product Verified Successfully!
+
+        <br><br>
+
+        <b>Product:</b>
+        ${foundProduct.name}
+
+        <br>
+
+        <b>Item ID:</b>
+        ${foundId}
+
+        <br>
+
+        <b>Price:</b>
+        ₹${foundProduct.price}
+
+        <br>
+
+        <b>Quantity Required:</b>
+        ${quantity}
+
+        <br>
+
+        <b>Current Stock:</b>
+        ${foundProduct.quantity}
+
+    `;
+
+
+    /*
+       If stock is zero,
+       tell merchant to purchase.
+    */
+
+    if (
+        foundProduct.quantity === 0
+    ) {
+
+        result.innerHTML += `
+
+            <br><br>
+
+            ⚠️ <b>
+                This item is out of stock.
+                Please purchase it from the supplier.
+            </b>
+
+        `;
+
+    }
+
+}
+
+
+/* ==================================================
+   MERCHANT LOGIN
+================================================== */
+
+function merchantLogin() {
+
+    const username =
+        document
+        .getElementById("username")
+        .value
+        .trim();
+
+
+    const password =
+        document
+        .getElementById("password")
+        .value;
+
+
+    const message =
+        document
+        .getElementById(
+            "loginMessage"
+        );
+
+
+    /*
+       Merchant credentials.
+    */
+
+    const correctUsername =
+        "naresh";
+
+
+    const correctPassword =
+        "0903";
+
+
+    /* Check credentials */
+
+    if (
+        username === correctUsername &&
+        password === correctPassword
+    ) {
+
+
+        message.style.color =
+            "green";
+
+
+        message.innerHTML =
+            "✅ Login successful!";
+
+
+        /*
+           Hide login.
+        */
+
+        document
+            .getElementById("loginArea")
+            .style.display = "none";
+
+
+        /*
+           Show secret codes.
+        */
+
+        document
+            .getElementById("secretTable")
+            .style.display = "block";
+
+
+        displaySecretCodes();
+
+    }
+
+    else {
+
+        message.style.color =
+            "red";
+
+
+        message.innerHTML =
+            "❌ Incorrect username or password.";
+
+    }
+
+}
+
+
+/* ==================================================
+   DISPLAY SECRET CODES
+================================================== */
+
+function displaySecretCodes() {
+
+    const tableBody =
+        document.getElementById(
+            "secretTableBody"
+        );
+
+
+    tableBody.innerHTML = "";
+
+
+    for (let id in products) {
+
+        const product =
+            products[id];
+
+
+        let stock =
+            product.quantity;
+
+
+        if (stock === 0) {
+
+            stock =
+                "OUT OF STOCK";
+
+        }
+
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>
+                ${product.name}
+            </td>
+
+            <td>
+                ${id}
+            </td>
+
+            <td>
+                <b>
+                    ${product.secret}
+                </b>
+            </td>
+
+            <td>
+                ₹${product.price}
+            </td>
+
+            <td>
+                ${stock}
+            </td>
+
+        `;
+
+
+        tableBody.appendChild(row);
+
+    }
+
+}
+
+
+/* ==================================================
+   INITIAL PAGE LOAD
+================================================== */
+
+displayItems();
+
+displayPurchaseNeeded();
+
+calculateTotal();
+
+</script>
+
+
+</body>
+</html>
+```
